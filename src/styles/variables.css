@@ -1,0 +1,170 @@
+/* CSS Variables for theming */
+:root {
+  /* Brand Colors - Consistent across themes */
+  --color-primary: #ff6b6b;
+  --color-primary-hover: #ff5252;
+  --color-primary-light: #ff8787;
+  --color-secondary: #4ecdc4;
+  --color-secondary-hover: #45b8af;
+  --color-accent: #ffe66d;
+
+  /* Light Theme Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-bg-hover: rgba(0, 0, 0, 0.05);
+
+  --color-text-primary: #212529;
+  --color-text-secondary: #5a6268;
+  --color-text-tertiary: #6c757d;
+  --color-text-inverse: #ffffff;
+
+  --color-border: #dee2e6;
+  --color-border-light: #f1f3f5;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-strong: rgba(0, 0, 0, 0.15);
+
+  /* Status Colors */
+  --color-success: #51cf66;
+  --color-success-light: #69db7c;
+  --color-success-dark: #218838;
+  --color-warning: #ffd43b;
+  --color-warning-light: #ffe066;
+  --color-error: #ff6b6b;
+  --color-error-light: #ff8787;
+  --color-info: #339af0;
+  --color-info-light: #4dabf7;
+  --color-info-dark: #0056b3;
+
+  /* Component-specific Colors */
+  --card-background: #ffffff;
+  --card-hover-background: #f8f9fa;
+  --input-background: #ffffff;
+  --input-border: #dee2e6;
+  --input-focus-border: var(--color-primary);
+  --button-background: var(--color-primary);
+  --button-text: #ffffff;
+  --skeleton-background: #e9ecef;
+  --skeleton-shimmer: rgba(255, 255, 255, 0.4);
+
+  /* Overlay Colors */
+  --overlay-light: rgba(255, 255, 255, 0.9);
+  --overlay-dark: rgba(0, 0, 0, 0.5);
+  --backdrop: rgba(0, 0, 0, 0.3);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+  --transition-theme: 300ms ease-in-out;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 var(--color-shadow);
+  --shadow-md: 0 4px 6px -1px var(--color-shadow);
+  --shadow-lg: 0 10px 15px -3px var(--color-shadow);
+  --shadow-xl: 0 20px 25px -5px var(--color-shadow);
+  --shadow-2xl: 0 25px 50px -12px var(--color-shadow-strong);
+
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* Breakpoints */
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1025px;
+
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+  /* Background Colors */
+  --color-bg-primary: #1a1a1a;
+  --color-bg-secondary: #2d2d2d;
+  --color-bg-tertiary: #3d3d3d;
+  --color-bg-hover: rgba(255, 255, 255, 0.05);
+
+  /* Text Colors */
+  --color-text-primary: #f8f9fa;
+  --color-text-secondary: #adb5bd;
+  --color-text-tertiary: #868e96;
+  --color-text-inverse: #212529;
+
+  /* Border and Shadow Colors */
+  --color-border: #495057;
+  --color-border-light: #3d3d3d;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-strong: rgba(0, 0, 0, 0.5);
+
+  /* Component-specific Colors */
+  --card-background: #2d2d2d;
+  --card-hover-background: #3d3d3d;
+  --input-background: #1e1e1e;
+  --input-border: #3a3a3a;
+  --input-focus-border: var(--color-primary);
+  --button-background: var(--color-primary);
+  --button-text: #ffffff;
+  --skeleton-background: #2a2a2a;
+  --skeleton-shimmer: rgba(255, 255, 255, 0.1);
+
+  /* Overlay Colors */
+  --overlay-light: rgba(0, 0, 0, 0.9);
+  --overlay-dark: rgba(0, 0, 0, 0.7);
+  --backdrop: rgba(0, 0, 0, 0.6);
+
+  /* Status Colors - Slightly adjusted for dark theme */
+  --color-success: #69db7c;
+  --color-success-light: #8ce99a;
+  --color-success-dark: #287d3c;
+  --color-warning: #ffe066;
+  --color-warning-light: #ffec99;
+  --color-error: #ff8787;
+  --color-error-light: #ffa8a8;
+  --color-info: #4dabf7;
+  --color-info-light: #74c0fc;
+  --color-info-dark: #1864ab;
+}
+
+/* Breakpoints (for reference in JS and media queries) */
+/* Mobile: < 768px */
+/* Tablet: 768px - 1024px */
+/* Desktop: > 1024px */

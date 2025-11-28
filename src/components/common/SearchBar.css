@@ -1,0 +1,121 @@
+.search-bar {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Visually hidden label for accessibility */
+.search-bar__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.search-bar__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--input-background);
+  border: 2px solid var(--input-border);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: all var(--transition-theme);
+}
+
+.search-bar__container:focus-within {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.search-bar__icon {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  transition: color var(--transition-theme);
+}
+
+.search-bar__icon--search {
+  margin-right: var(--spacing-sm);
+}
+
+.search-bar__icon--loading {
+  margin-left: var(--spacing-sm);
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search-bar__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  padding: var(--spacing-xs) 0;
+  transition: color var(--transition-theme);
+}
+
+.search-bar__input::placeholder {
+  color: var(--color-text-tertiary);
+  transition: color var(--transition-theme);
+}
+
+.search-bar__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--spacing-sm);
+  padding: var(--spacing-xs);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.search-bar__clear:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.search-bar__clear:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .search-bar__container {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .search-bar__input {
+    font-size: 0.875rem;
+  }
+
+  .search-bar__icon {
+    font-size: 1.125rem;
+  }
+
+  .search-bar__icon--search {
+    margin-right: 0.5rem;
+  }
+}

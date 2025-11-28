@@ -1,0 +1,222 @@
+/* Header Component Styles */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.header__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.header__logo:hover {
+  color: var(--color-secondary);
+}
+
+.header__logo-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navigation */
+.header__nav {
+  display: flex;
+}
+
+.header__nav--desktop {
+  display: none;
+}
+
+.header__nav-list {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-md);
+  margin: 0;
+  padding: 0;
+}
+
+.header__nav--mobile .header__nav-list {
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.header__nav-item {
+  margin: 0;
+}
+
+.header__nav-link {
+  display: block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.header__nav-link:hover {
+  color: var(--color-primary);
+  background-color: var(--color-bg-secondary);
+}
+
+.header__nav-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Search Bar */
+.header__search {
+  flex: 1;
+  max-width: 400px;
+}
+
+.header__search--desktop {
+  display: none;
+}
+
+.header__search--mobile {
+  margin: var(--spacing-md) 0;
+}
+
+/* Theme Toggle */
+.header__theme--desktop {
+  display: none;
+}
+
+.header__theme--mobile {
+  margin: var(--spacing-md) 0;
+}
+
+/* Mobile Menu Button */
+.header__menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.header__menu-button:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+}
+
+.header__menu-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.header__menu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Menu */
+.header__mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base);
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border);
+}
+
+.header__mobile-menu--open {
+  max-height: 600px;
+  padding: var(--spacing-lg);
+}
+
+/* Tablet Breakpoint (768px - 1024px) */
+@media (min-width: 768px) {
+  .header__container {
+    gap: var(--spacing-xl);
+  }
+
+  .header__nav--desktop {
+    display: flex;
+  }
+
+  .header__nav--mobile {
+    display: none;
+  }
+
+  .header__search--desktop {
+    display: block;
+  }
+
+  .header__search--mobile {
+    display: none;
+  }
+
+  .header__menu-button {
+    display: none;
+  }
+
+  .header__mobile-menu {
+    display: none;
+  }
+}
+
+/* Desktop Breakpoint (> 1024px) */
+@media (min-width: 1024px) {
+  .header__container {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+
+  .header__theme--desktop {
+    display: block;
+  }
+
+  .header__theme--mobile {
+    display: none;
+  }
+
+  .header__nav-list {
+    gap: var(--spacing-lg);
+  }
+
+  .header__search {
+    max-width: 500px;
+  }
+}
+
+/* Mobile Only (< 768px) */
+@media (max-width: 767px) {
+  .header__container {
+    padding: var(--spacing-md);
+  }
+
+  .header__logo {
+    font-size: 1.25rem;
+  }
+}

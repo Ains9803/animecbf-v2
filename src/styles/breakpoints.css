@@ -1,0 +1,79 @@
+/* Breakpoints and Media Query Utilities */
+
+/* 
+ * Breakpoint definitions:
+ * - Mobile: < 768px
+ * - Tablet: 768px - 1024px  
+ * - Desktop: > 1024px
+ */
+
+/* Mobile-first approach: styles apply to mobile by default */
+
+/* Tablet and up (min-width: 768px) */
+@media (min-width: 768px) {
+  .tablet-up {
+    display: block;
+  }
+  
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Desktop and up (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .desktop-up {
+    display: block;
+  }
+  
+  .tablet-only {
+    display: none;
+  }
+}
+
+/* Mobile only (max-width: 767px) */
+@media (max-width: 767px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .tablet-up,
+  .desktop-up {
+    display: none;
+  }
+}
+
+/* Tablet only (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .tablet-only {
+    display: block;
+  }
+}
+
+/* Desktop only (min-width: 1025px) */
+@media (min-width: 1025px) {
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* Hide on mobile */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}

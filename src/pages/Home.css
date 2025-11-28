@@ -1,0 +1,33 @@
+.home-page {
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+  transition: background var(--transition-theme);
+}
+
+.home-carousel-section {
+  background: var(--color-bg-primary);
+  padding: var(--spacing-xl) 0 var(--spacing-md);
+  transition: background var(--transition-theme);
+}
+
+.home-section-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+.home-section-title {
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-3xl));
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  transition: color var(--transition-theme);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-section-header {
+    padding: 0 1rem;
+  }
+}
