@@ -38,10 +38,17 @@ function Series() {
       if (searchQuery) {
         // Search with filter for TV series
         response = await searchAnime(searchQuery, PAGE_SIZE, currentOffset);
-        // Filter to only TV series
-        response.data = response.data.filter(anime => anime.attributes.subtype === 'TV');
+        // Filter to only TV series - validate data exists
+        response.data = Array.isArray(response.data) 
+          ? response.data.filter(anime => anime?.attributes?.subtype === 'TV')
+          : [];
       } else {
         response = await getSeries(PAGE_SIZE, currentOffset);
+      }
+
+      // Validate response has data array
+      if (!response || !Array.isArray(response.data)) {
+        throw new Error('Respuesta inválida del servidor');
       }
 
       if (isLoadMore) {

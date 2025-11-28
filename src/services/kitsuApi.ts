@@ -130,6 +130,11 @@ export const getAnime = async (params: GetAnimeParams = {}): Promise<KitsuAPIRes
       params: queryParams,
     });
 
+    // Validate response data
+    if (!response.data || !response.data.data) {
+      throw new APIError('Respuesta inválida del servidor');
+    }
+
     return response.data;
   } catch (error) {
     return handleError(error);
@@ -164,6 +169,12 @@ export const getMovies = async (limit?: number, offset?: number): Promise<KitsuA
 export const getAnimeById = async (id: string): Promise<Anime> => {
   try {
     const response = await axiosInstance.get<KitsuAPIDetailResponse>(`/anime/${id}`);
+    
+    // Validate response data
+    if (!response.data || !response.data.data) {
+      throw new NotFoundError('Anime no encontrado');
+    }
+    
     return response.data.data;
   } catch (error) {
     return handleError(error);

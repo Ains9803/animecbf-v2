@@ -38,10 +38,17 @@ function Movies() {
       if (searchQuery) {
         // Search with filter for movies
         response = await searchAnime(searchQuery, PAGE_SIZE, currentOffset);
-        // Filter to only movies
-        response.data = response.data.filter(anime => anime.attributes.subtype === 'movie');
+        // Filter to only movies - validate data exists
+        response.data = Array.isArray(response.data) 
+          ? response.data.filter(anime => anime?.attributes?.subtype === 'movie')
+          : [];
       } else {
         response = await getMovies(PAGE_SIZE, currentOffset);
+      }
+
+      // Validate response has data array
+      if (!response || !Array.isArray(response.data)) {
+        throw new Error('Respuesta inválida del servidor');
       }
 
       if (isLoadMore) {

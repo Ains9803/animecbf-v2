@@ -25,9 +25,10 @@ function Home() {
       try {
         setLoadingTrending(true);
         const response = await getAnime({ limit: 10 });
-        setTrendingAnimes(response.data);
+        setTrendingAnimes(Array.isArray(response?.data) ? response.data : []);
       } catch (error) {
         console.error('Error fetching trending animes:', error);
+        setTrendingAnimes([]);
       } finally {
         setLoadingTrending(false);
       }
@@ -42,9 +43,10 @@ function Home() {
       try {
         setLoadingSeries(true);
         const response = await getSeries(12);
-        setFeaturedSeries(response.data);
+        setFeaturedSeries(Array.isArray(response?.data) ? response.data : []);
       } catch (error) {
         console.error('Error fetching series:', error);
+        setFeaturedSeries([]);
       } finally {
         setLoadingSeries(false);
       }
@@ -59,9 +61,10 @@ function Home() {
       try {
         setLoadingMovies(true);
         const response = await getMovies(12);
-        setFeaturedMovies(response.data);
+        setFeaturedMovies(Array.isArray(response?.data) ? response.data : []);
       } catch (error) {
         console.error('Error fetching movies:', error);
+        setFeaturedMovies([]);
       } finally {
         setLoadingMovies(false);
       }
