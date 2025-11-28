@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosError } from 'axios';
 import { API_BASE_URL, PAGE_SIZE } from '../utils/constants';
+import { translateToSpanish } from './translationApi';
 
 // Custom error classes
 export class NetworkError extends Error {
@@ -107,6 +108,30 @@ const handleError = (error: unknown): never => {
 };
 
 /**
+ * Translate anime synopsis to Spanish
+ * @param anime - Anime object
+ * @returns Anime with translated synopsis
+ */
+const translateAnimeSynopsis = async (anime: Anime): Promise<Anime> => {
+  if (anime.attributes.synopsis) {
+    try {
+      const translatedSynopsis = await translateToSpanish(anime.attributes.synopsis);
+      return {
+        ...anime,
+        attributes: {
+          ...anime.attributes,
+          synopsis: translatedSynopsis
+        }
+      };
+    } catch (error) {
+      console.error('Error translating synopsis:', error);
+      return anime;
+    }
+  }
+  return anime;
+};
+
+/**
  * Get anime list with optional filters
  * @param params - Query parameters including subtype, pagination, and search
  * @returns Promise with anime list response
@@ -135,7 +160,15 @@ export const getAnime = async (params: GetAnimeParams = {}): Promise<KitsuAPIRes
       throw new APIError('Respuesta inválida del servidor');
     }
 
-    return response.data;
+    // Translate synopses to Spanish
+    const translatedData = await Promise.all(
+      response.data.data.map(anime => translateAnimeSynopsis(anime))
+    );
+
+    return {
+      ...response.data,
+      data: translatedData
+    };
   } catch (error) {
     return handleError(error);
   }
@@ -175,7 +208,10 @@ export const getAnimeById = async (id: string): Promise<Anime> => {
       throw new NotFoundError('Anime no encontrado');
     }
     
-    return response.data.data;
+    // Translate synopsis to Spanish
+    const translatedAnime = await translateAnimeSynopsis(response.data.data);
+    
+    return translatedAnime;
   } catch (error) {
     return handleError(error);
   }
